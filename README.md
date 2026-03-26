@@ -23,8 +23,8 @@ install.bat を実行してください。
 
 # 3. 親プロキシサーバーを利用しない場合
 (1) conf/squid.conf の最後の方にある、次の2行を削除してください。
-never_direct allow all
-never_direct allow CONNECT
+- never_direct allow all
+- never_direct allow CONNECT
 
 
 # 起動
