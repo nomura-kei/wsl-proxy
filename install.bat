@@ -16,6 +16,7 @@ rem ===== ŠÇ—ÒŒ ŒÀ‚Å‚È‚¢ê‡‚Ìˆ— =====
     if exist  %~dp0images\alpine-minirootfs*.tar.gz (
         echo image downloaded
     ) else (
+        mkdir images
         curl -fSsL -k -o images\alpine-minirootfs-x.x.x-x86_64.tar.gz %ALPINE_IMAGE_URL%
     )
 
