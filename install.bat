@@ -39,7 +39,7 @@ rem ===== 管理者権限でない場合の処理 =====
 
 REM ===== 管理者権限の場合の処理 =====
 REM portproxy で AlphinProxy の 3128 へアクセスできるようにする。
-set /P WSL_ADDRESS=<"%~dp0wsl_address.txt"
+set /P WSL_ADDRESS=<"%~dp0conf\wsl_address.txt"
 netsh interface portproxy set v4tov4 listenport=3128 connectport=3128 listenaddress=0.0.0.0 connectaddress=%WSL_ADDRESS%
 
 endlocal
