@@ -1,6 +1,5 @@
 @echo off
 rem プロキシサーバーを構築します。
-rem Alpine + squid で構築します。
 cd %~dp0
 
 setlocal enabledelayedexpansion
@@ -30,8 +29,11 @@ rem ===== 管理者権限でない場合の処理 =====
     for /F "usebackq delims=" %%p in (`wsl -d AlpineProxy wslpath -a -u "!WIN_BASE_PATH!"`) do set "WIN_BASE_PATH=%%p"
 
     rem install.sh を実行
-    wsl -d AlpineProxy -u root --exec /bin/cp "!WIN_BASE_PATH!/scripts/install.sh" /tmp/
-    wsl -d AlpineProxy -u root --exec /bin/sh /tmp/install.sh "!WIN_BASE_PATH!"
+    wsl -d AlpineProxy -u root --exec /bin/cp -f "!WIN_BASE_PATH!/scripts/install.sh" /tmp/
+    wsl -d AlpineProxy -u root --exec /bin/sh /tmp/install.sh "!WIN_BASE_PATH!" install
+    if errorlevel 1 (
+        exit /b 1
+    )
 
     REM 管理者権限として本バッチを実行する。
     @powershell start-process %~0 -verb runas
