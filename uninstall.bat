@@ -2,8 +2,8 @@
 net session >NUL 2> NUL
 if %ERRORLEVEL% neq 0 (
     rem ===== 管理者権限でない場合の処理 =====
-    wsl --terminate AlpineProxy
-    wsl --unregister AlpineProxy
+    wsl --terminate WslProxy
+    wsl --unregister WslProxy
     REM 管理者権限として本バッチを実行する。
     @powershell start-process %~0 -verb runas
     goto:eof
