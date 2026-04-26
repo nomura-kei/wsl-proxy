@@ -1,6 +1,10 @@
 #!/bin/sh
 WIN_BASE_PATH=$1
 
+if [ -f "${WIN_BASE_PATH}/conf/proxy.txt" ]; then
+    . "${WIN_BASE_PATH}/conf/proxy.txt"
+fi
+
 # ----------------------------------------------------------------------
 #  save wsl ipaddress (conf/wsl_address.txt)
 # ----------------------------------------------------------------------
